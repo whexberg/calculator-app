@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+@import "./variables";
+@import "./attribution";
+@import "./switch";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    min-height: 100%;
+    min-width: 100%;
+}
+main {
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+    @include themify($themes) {
+        background-color: themed("backgroundScreen");
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    // font-family: $font-family;
+    @include themify($themes) {
+        background-color: themed("backgroundPrimary");
+    }
+}
+
+.calculator {
+    width: 100%;
+    max-width: 540px;
+    max-height: 708px;
+    padding: 3rem;
+    margin: 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    h1 {
+        @include themify($themes) {
+            color: themed("fontColorHeader");
+        }
+        font-size: 32px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .theme-selector {
+        display: flex;
+        // flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-around;
+        & > p {
+            width: 50%;
+            @include themify($themes) {
+                color: themed("fontColorHeader");
+            }
+            text-transform: uppercase;
+            align-self: flex-end;
+            margin: 0 21px 0 0;
+            padding: 0 0 6px 0;
+
+            font-family: Spartan;
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 13px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .nums {
+            display: flex;
+            justify-content: space-between;
+            // padding: 0 0.5rem;
+            margin-left: auto;
+            width: 50%;
+        }
+    }
+}
+
+.output {
+    width: 100%;
+    height: 88px;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 1.5rem;
+
+    @include themify($themes) {
+        background-color: themed("backgroundOutput");
+    }
+
+    p.output-text {
+        width: 100%;
+        margin: auto 26px;
+        text-align: right;
+
+        font-family: Spartan;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 32px;
+
+        @include themify($themes) {
+            color: themed("fontColorOutput");
+        }
+    }
+}
+.buttons {
+    padding: 1.5rem;
+    border-radius: 10px;
+    @include themify($themes) {
+        background-color: themed("backgroundSecondary");
+    }
+
+    .btn-row {
+        display: flex;
+        justify-content: space-between;
+    }
+    .btn {
+        // min-width: 33px;
+        height: 60px;
+        flex: 1;
+
+        font-size: $font-size;
+        text-transform: uppercase;
+        margin: calc(0.8125rem / 2);
+        border: none;
+        padding: 0;
+        border-radius: 5px;
+        @include themify($themes) {
+            color: themed("fontColorButtonPrimary");
+        }
+
+        &--digit,
+        &--operator {
+            font-family: Spartan;
+            font-size: 28px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 31px;
+            letter-spacing: -0.47px;
+            text-align: center;
+
+            @include themify($themes) {
+                background-color: themed("primaryKeyBackground");
+                box-shadow: inset 0px -4px 0px themed("primaryKeyShadow");
+            }
+        }
+        &--del,
+        &--reset,
+        &--equal {
+            font-family: Spartan;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 18px;
+            letter-spacing: -0.27px;
+            text-align: center;
+        }
+        &--reset,
+        &--del {
+            @include themify($themes) {
+                color: themed("fontColorButtonSecondary");
+                background-color: themed("secondaryKeyBackground");
+                box-shadow: inset 0px -4px 0px themed("secondaryKeyShadow");
+            }
+        }
+        &--reset {
+            width: 50%;
+        }
+        &--equal {
+            width: 50%;
+
+            @include themify($themes) {
+                color: themed("fontColorButtonTertiary");
+                background-color: themed("tertiaryKeyBackground");
+                box-shadow: inset 0px -4px 0px themed("tertiaryKeyShadow");
+            }
+        }
+    }
+}

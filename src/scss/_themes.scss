@@ -1,0 +1,91 @@
+// https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1
+
+$themes: (
+    dark: (
+        backgroundPrimary: hsl(222, 26%, 31%),
+        backgroundOutput: hsl(224, 36%, 15%),
+        backgroundSecondary: hsl(223, 31%, 20%),
+        backgroundScreen: hsl(224, 36%, 15%),
+        // KEYS -- PRIMARY
+        primaryKeyBackground: hsl(30, 25%, 89%),
+        primaryKeyShadow: hsl(28, 16%, 65%),
+        // KEYS -- SECONDARY
+        secondaryKeyBackground: hsl(225, 21%, 49%),
+        secondaryKeyShadow: hsl(224, 28%, 35%),
+        // KEYS -- TERTIARY
+        tertiaryKeyBackground: hsl(6, 63%, 50%),
+        tertiaryKeyShadow: hsl(6, 70%, 34%),
+        // TEXT
+        fontColorHeader: hsl(0, 0, 100%),
+        fontColorOutput: hsl(0, 0, 100%),
+        fontColorButtonPrimary: hsl(221, 14%, 31%),
+        fontColorButtonSecondary: hsl(0, 0, 100%),
+        fontColorButtonTertiary: hsl(0, 0, 100%),
+    ),
+    light: (
+        backgroundPrimary: hsl(0, 0%, 90%),
+        backgroundOutput: hsl(9, 1%, 93%),
+        backgroundSecondary: hsl(0, 5%, 81%),
+        backgroundScreen: hsl(0, 0%, 93%),
+        // KEYS -- PRIMARY
+        primaryKeyBackground: hsl(45, 7%, 89%),
+        primaryKeyShadow: hsl(35, 11%, 61%),
+        // KEYS -- SECONDARY
+        secondaryKeyBackground: hsl(185, 42%, 37%),
+        secondaryKeyShadow: hsl(185, 58%, 25%),
+        // KEYS -- TERTIARY
+        tertiaryKeyBackground: hsl(25, 98%, 40%),
+        tertiaryKeyShadow: hsl(25, 99%, 27%),
+        // TEXT
+        fontColorHeader: hsl(60, 10%, 19%),
+        fontColorOutput: hsl(60, 10%, 19%),
+        fontColorButtonPrimary: hsl(60, 10%, 19%),
+        fontColorButtonSecondary: hsl(0, 0, 100%),
+        fontColorButtonTertiary: hsl(0, 0, 100%),
+    ),
+    twilight: (
+        backgroundPrimary: hsl(268, 75%, 9%),
+        backgroundOutput: hsl(268, 71%, 12%),
+        backgroundSecondary: hsl(268, 71%, 12%),
+        backgroundScreen: hsl(268, 71%, 12%),
+        // KEYS -- PRIMARY
+        primaryKeyBackground: hsl(268, 47%, 21%),
+        primaryKeyShadow: hsl(290, 70%, 36%),
+        // KEYS -- SECONDARY
+        secondaryKeyBackground: hsl(281, 89%, 26%),
+        secondaryKeyShadow: hsl(285, 91%, 52%),
+        // KEYS -- TERTIARY
+        tertiaryKeyBackground: hsl(176, 100%, 44%),
+        tertiaryKeyShadow: hsl(177, 92%, 70%),
+        // TEXT
+        fontColorHeader: hsl(52, 100%, 62%),
+        fontColorOutput: hsl(52, 100%, 62%),
+        fontColorButtonPrimary: hsl(52, 100%, 62%),
+        fontColorButtonSecondary: hsl(0, 0, 100%),
+        fontColorButtonTertiary: hsl(198, 20%, 13%),
+    ),
+);
+
+@mixin themify($themes: $themes) {
+    @each $theme, $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge(
+                    $theme-map,
+                    (
+                        $key: $value,
+                    )
+                ) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

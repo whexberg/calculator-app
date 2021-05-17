@@ -1,0 +1,13 @@
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    @include themify($themes) {
+        color: themed("fontColorHeader");
+    }
+
+    a {
+        @include themify($themes) {
+            color: themed("tertiaryKeyBackground");
+        }
+    }
+}
