@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- displays site properly based on user's device -->
+
+        <link rel="shortcut icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+
+        <title>Frontend Mentor | Calculator app</title>
+
+        <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+        <!-- <link rel="stylesheet" href="./dist/css/style.css" /> -->
+    </head>
+    <body class="theme-dark">
+        <main>
+            <div class="calculator">
+                <div class="header">
+                    <h1>calc</h1>
+                    <div class="theme-selector">
+                        <p>theme</p>
+                        <div class="tw-toggle">
+                            <input checked type="radio" name="toggle" class="toggle-input" id="toggle-dark" />
+                            <label class="toggle toggle-yes" for="toggle-dark">1</label>
+                            <input type="radio" name="toggle" class="toggle-input" id="toggle-light" />
+                            <label class="toggle toggle-yes" for="toggle-light">2</label>
+                            <input type="radio" name="toggle" class="toggle-input" id="toggle-twilight" />
+                            <label class="toggle toggle-yes" for="toggle-twilight">3</label>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output">
+                    <p class="output-text">0</p>
+                </div>
+                <div class="buttons">
+                    <div class="btn-row">
+                        <button class="btn btn--digit" id="digit-7">7</button>
+                        <button class="btn btn--digit" id="digit-8">8</button>
+                        <button class="btn btn--digit" id="digit-9">9</button>
+                        <button class="btn btn--del" id="removeValue">del</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn--digit" id="digit-4">4</button>
+                        <button class="btn btn--digit" id="digit-5">5</button>
+                        <button class="btn btn--digit" id="digit-6">6</button>
+                        <button class="btn btn--operator" id="addOperation">+</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn--digit" id="digit-1">1</button>
+                        <button class="btn btn--digit" id="digit-2">2</button>
+                        <button class="btn btn--digit" id="digit-3">3</button>
+                        <button class="btn btn--operator" id="subOperation">-</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn--digit" id="addDecimal">.</button>
+                        <button class="btn btn--digit" id="digit-0">0</button>
+                        <button class="btn btn--operator" id="divOperation">/</button>
+                        <button class="btn btn--operator" id="multOperation">x</button>
+                    </div>
+                    <div class="btn-row">
+                        <button class="btn btn--reset" id="allClear">Reset</button>
+                        <button class="btn btn--equal" id="calculate">=</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="attribution">
+                Challenge by
+                <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by
+                <a href="#">William Hexberg</a>.
+            </div>
+        </main>
+        <!-- <script src="./dist/js/index.min.js"></script> -->
+    </body>
+</html>
